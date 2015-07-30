@@ -1,78 +1,14 @@
 package com.kraftmatic.bookstoreservice.service;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-
 import com.kraftmatic.bookstoreservice.models.Book;
 import com.kraftmatic.bookstoreservice.models.BookList;
 
-public class BookListDAO {
+public interface BookListDAO {
 
-	private Connection connection;
-	private Statement statement;
+	public BookList getBooksByAuthor(String author);
 
-	public BookListDAO() {
-	}
+	public BookList getBooks();
 
-	public BookList getBooksByAuthor(String author) throws SQLException {
-
-		String query = "SELECT * FROM employee WHERE author=" + author;
-		ResultSet rs = null;
-		BookList books = new BookList();
-
-		try {
-			// Connect to SQL database
-			// retrieve and convert result set into BookList data
-
-			// For testing we'll put in a fake book list
-			Book book1 = new Book("Christmas Carol", "Charles Dickens");
-			Book book2 = new Book("Tale of Two Cities", "Charles Dickens");
-			books.getBooks().add(book1);
-			books.getBooks().add(book2);
-		} finally {
-			// close all connections/statements/etc.
-		}
-
-		return books;
-	}
-
-	public BookList getBooks() throws SQLException {
-		String query = "SELECT * FROM books";
-		ResultSet rs = null;
-		BookList books = new BookList();
-
-		try {
-			// Connect to SQL database
-			// retrieve and convert result set into BookList data
-
-			// For testing we'll put in a fake book list
-			Book book1 = new Book("Christmas Carol", "Charles Dickens");
-			Book book2 = new Book("Hop on Pop", "Dr. Seuss");
-			books.getBooks().add(book1);
-			books.getBooks().add(book2);
-
-		} finally {
-			// close all connections/statements/etc.
-		}
-
-		return books;
-	}
-
-	public void submitBook(Book book) throws SQLException {
-
-		String query = "SELECT * FROM books";
-		ResultSet rs = null;
-		BookList books = null;
-
-		try {
-			// Connect to SQL database
-			// retrieve and convert result set into BookList data
-		} finally {
-			// close all connections/statements/etc.
-		}
-
-	}
+	public void submitBook(Book book);
 
 }
